@@ -20,7 +20,9 @@ parse_global_flags "$@"
 # Remove global flags from arguments
 ARGS=($(strip_global_flags "$@"))
 
-COMMAND="${ARGS[0]}"
+set -- "${ARGS[@]}"
+
+COMMAND="$1"
 
 # Default to help if no command provided
 if [ -z "$COMMAND" ]; then
