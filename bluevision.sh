@@ -75,6 +75,12 @@ case "$COMMAND" in
       githuman)
         source "$BASE_DIR/commands/githuman.sh"
         ;;
+      
+      scan-issue)
+         shift
+         source "$BASE_DIR/commands/scan_issue.sh"
+         ;;
+
 
 
 
@@ -91,6 +97,8 @@ case "$COMMAND" in
         echo "  devcheckin   Review current Git progress"
         echo "  refactor     Suggest code improvements"
         echo "  env          Detect environment context"
+        echo "  scan-issue   Summarize a GitHub issue"
+
         echo ""
         echo "Global Flags:"
         echo ""
