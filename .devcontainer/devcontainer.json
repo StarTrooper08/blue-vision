@@ -1,0 +1,23 @@
+{
+  "name": "BlueVision Dev Environment",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "postCreateCommand": "echo '🔵 BlueVision environment ready! Run: copilot auth login'",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "workbench.colorTheme": "Default High Contrast",
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-azuretools.vscode-docker",
+        "GitHub.vscode-pull-request-github"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}

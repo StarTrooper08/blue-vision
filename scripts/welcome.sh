@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+BLUE="\033[1;34m"
+RESET="\033[0m"
+DIM="\033[2m"
+WHITE="\033[1;37m"
+
+echo ""
+echo -e "${BLUE}██████╗ ██╗     ██╗   ██╗███████╗██╗   ██╗██╗███████╗██╗ ██████╗ ███╗   ██╗${RESET}"
+echo -e "${BLUE}██╔══██╗██║     ██║   ██║██╔════╝██║   ██║██║██╔════╝██║██╔═══██╗████╗  ██║${RESET}"
+echo -e "${BLUE}██████╔╝██║     ██║   ██║█████╗  ██║   ██║██║███████╗██║██║   ██║██╔██╗ ██║${RESET}"
+echo -e "${BLUE}██╔══██╗██║     ██║   ██║██╔══╝  ╚██╗ ██╔╝██║╚════██║██║██║   ██║██║╚██╗██║${RESET}"
+echo -e "${BLUE}██████╗ ███████╗╚██████╔╝███████╗ ╚████╔╝ ██║███████║██║╚██████╔╝██║ ╚████║${RESET}"
+echo -e "${BLUE}╚═════╝  ╚══════╝ ╚═════╝ ╚══════╝  ╚═══╝  ╚═╝╚══════╝╚═╝ ╚═════╝ ╚═╝╚═══╝${RESET}"
+echo ""
+echo -e "${DIM}AI Workflow Intelligence for all Developers${RESET}"
+echo -e "${WHITE}Powered by GitHub Copilot CLI${RESET}"
+echo ""
+echo "Type: bluevision help"
+echo ""
