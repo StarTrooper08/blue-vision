@@ -31,7 +31,8 @@ if [[ "$USER_COMMAND" =~ rm[[:space:]]+-rf[[:space:]]+/ ]]; then
 fi
 
 # Block fork bomb
-if [[ "$USER_COMMAND" =~ :\(\)\{:\|\:&\};: ]]; then
+if [[ "$USER_COMMAND" == *":(){ :|:& };:"* ]]; then
+
     echo "❌ Fork bomb pattern detected."
     echo "Execution blocked for safety."
     echo ""
