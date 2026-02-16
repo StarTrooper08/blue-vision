@@ -1,32 +1,49 @@
 #!/usr/bin/env bash
 
 # ----------------------------------------
-# CalmMode Library
+# CalmMode + Accessibility Library
 # ----------------------------------------
 
 CALM_MODE=false
+ACCESSIBLE_MODE=false
 
-# Detect --calm flag
-parse_calm_flag() {
+
+# Detect global flags
+
+parse_global_flags() {
     for arg in "$@"; do
-        if [ "$arg" = "--calm" ]; then
-            CALM_MODE=true
-        fi
+        case "$arg" in
+            --calm)
+                CALM_MODE=true
+                ;;
+            --accessible)
+                ACCESSIBLE_MODE=true
+                CALM_MODE=true
+                ;;
+        esac
     done
 }
 
-# Remove --calm from args
-strip_calm_flag() {
+
+# Remove global flags from arguments
+
+strip_global_flags() {
     local new_args=()
     for arg in "$@"; do
-        if [ "$arg" != "--calm" ]; then
-            new_args+=("$arg")
-        fi
+        case "$arg" in
+            --calm|--accessible)
+                ;;
+            *)
+                new_args+=("$arg")
+                ;;
+        esac
     done
     echo "${new_args[@]}"
 }
 
-# Soften harsh words
+# ----------------------------------------
+# Soften harsh technical language
+# ----------------------------------------
 soften_language() {
     echo "$1" | sed -E \
         -e 's/ERROR/A problem occurred/gI' \
@@ -36,32 +53,54 @@ soften_language() {
         -e 's/Traceback/Technical details/gI'
 }
 
+
 # Calm output formatter
+
 format_calm_output() {
     local raw_output="$1"
 
     echo ""
-    echo "🔵 CalmMode Active"
+
+    if [ "$ACCESSIBLE_MODE" = true ]; then
+        echo "🔵 Accessible Mode Enabled"
+    else
+        echo "🔵 CalmMode Active"
+    fi
+
     echo "----------------------------------------"
     echo ""
 
     local softened
     softened=$(soften_language "$raw_output")
 
-    echo "$softened" | head -n 12
+    if [ "$ACCESSIBLE_MODE" = true ]; then
+        # Shorter output for accessibility
+        echo "$softened" | head -n 8
+    else
+        echo "$softened" | head -n 12
+    fi
 
     echo ""
     echo "----------------------------------------"
-    echo "Showing simplified output."
-    echo "Rerun without --calm for full details."
+
+    if [ "$ACCESSIBLE_MODE" = true ]; then
+        echo "Output simplified for clarity."
+        echo "Use without --accessible for full detail."
+    else
+        echo "Showing simplified output."
+        echo "Rerun without --calm for full details."
+    fi
+
     echo ""
 }
 
+
 # Output router
+
 display_output() {
     local content="$1"
 
-    if [ "$CALM_MODE" = true ]; then
+    if [ "$CALM_MODE" = true ] || [ "$ACCESSIBLE_MODE" = true ]; then
         format_calm_output "$content"
     else
         echo "$content"
