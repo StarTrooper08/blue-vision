@@ -14,6 +14,7 @@ RUN apt-get update && \
         wget \
         tar \
         git \
+        gnupg \
         ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
@@ -57,9 +58,6 @@ RUN mkdir -p -m 755 /etc/apt/keyrings && \
 
 COPY bluevision.sh /usr/local/bin/bluevision
 RUN chmod +x /usr/local/bin/bluevision
-
-#summarize issue command
-RUN chmod +x commands/scan_issue.sh
 
 COPY lib /usr/local/bin/lib
 COPY commands /usr/local/bin/commands
