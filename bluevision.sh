@@ -65,6 +65,17 @@ case "$COMMAND" in
         source "$BASE_DIR/commands/refactor.sh"
         ;;
 
+     debug)
+        shift
+        source "$BASE_DIR/commands/guideddebug.sh"
+        ;;
+
+      githuman)
+        source "$BASE_DIR/commands/githuman.sh"
+        ;;
+
+
+
     help)
         echo ""
         echo "🔵 BlueVision — AI Workflow Intelligence"
