@@ -80,6 +80,11 @@ case "$COMMAND" in
          shift
          source "$BASE_DIR/commands/scan_issue.sh"
          ;;
+      pull-req)
+         shift
+         source "$BASE_DIR/commands/pull_req.sh"
+         ;;
+
 
 
 
@@ -98,6 +103,8 @@ case "$COMMAND" in
         echo "  refactor     Suggest code improvements"
         echo "  env          Detect environment context"
         echo "  scan-issue   Summarize a GitHub issue"
+        echo "  pull-req     Review a GitHub pull request"
+
 
         echo ""
         echo "Global Flags:"
